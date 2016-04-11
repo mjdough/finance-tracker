@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   def stock_already_added?(ticker_symbol)
     stock = Stock.find_by_ticker(ticker_symbol)
     return false unless stock
-    user_stocks.where(stock_id: stock_id).exists?
+    user_stocks.where(stock_id: stock.id).exists?
   end
 
   def not_friends_with?(friend_id)
@@ -37,7 +37,6 @@ class User < ActiveRecord::Base
   
   def self.search(param)
     return User.none if param.blank?
-    
     param.strip!
     param.downcase!
     (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq

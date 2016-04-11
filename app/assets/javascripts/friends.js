@@ -1,14 +1,4 @@
-
-var hide_spinner = function() {
-  $('#spinner').hide();
-}
-
-var show_spinner = function() {
-  $('#spinner').show();
-}
-
 var init_friend_lookup;
-
 
 init_friend_lookup = function() {
   $('#friend-lookup-form').on('ajax:before', function(event, data, status) {
@@ -26,10 +16,10 @@ init_friend_lookup = function() {
   
   $('#friend-lookup-form').on('ajax:error', function(event, xhr, status, error) {
    hide_spinner();
-   $('#friend-lookup-results').replaceWith('');
+   $('#friend-lookup-results').replaceWith(' ');
     $('#friend-lookup-errors').replaceWith('Person was not found.')
   });
-};
+}
 
 
 $(document).ready(function() {
